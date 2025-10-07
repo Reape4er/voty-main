@@ -56,7 +56,7 @@ export default {
     try {
       const nominationId = this.$route.query.nomination_id;
       const response = await axios.get(
-        `http://26.134.156.44:8000/applications?nomination_id=${nominationId}`,
+        `http://localhost:8000/applications?nomination_id=${nominationId}`,
         {
           headers: {
             Authorization: "Bearer " + this.$cookies.get("token"),
@@ -87,7 +87,7 @@ export default {
     async acceptApplication(applicationId, row) {
       await axios
         .put(
-          `http://26.134.156.44:8000/applications?application_id=${applicationId}`,
+          `http://localhost:8000/applications?application_id=${applicationId}`,
           {
             application_status: true,
           },
@@ -114,7 +114,7 @@ export default {
     async rejectApplication(applicationId, row) {
       await axios
         .put(
-          `http://26.134.156.44:8000/applications?application_id=${applicationId}`,
+          `http://localhost:8000/applications?application_id=${applicationId}`,
           {
             application_status: false,
           },

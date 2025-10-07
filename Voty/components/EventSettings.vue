@@ -93,7 +93,7 @@ export default {
   async fetch() {
     const eventId = this.$route.query.id;
     const response = await this.$axios.$get(
-      "http://26.134.156.44:8000/events/" + eventId,
+      "http://localhost:8000/events/" + eventId,
       {
         headers: {
           Authorization: "Bearer " + this.$cookies.get("token"),
@@ -117,7 +117,7 @@ export default {
         // Если eventId существует, отправляем запрос на обновление
         axios
           .put(
-            `http://26.134.156.44:8000/events/${eventId}`,
+            `http://localhost:8000/events/${eventId}`,
             {
               event_name: this.eventTitle,
               event_description: this.eventDescription,
@@ -164,7 +164,7 @@ export default {
       }
       axios
         .post(
-          `http://26.134.156.44:8000/applications/upload`,
+          `http://localhost:8000/applications/upload`,
           {
             event_id: eventId,
             applications: this.participants,

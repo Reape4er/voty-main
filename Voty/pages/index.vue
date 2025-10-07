@@ -56,7 +56,7 @@ export default {
   async fetch() {
     // Вызывайте функцию для получения мероприятий после создания компонента
     try {
-      const response = await axios.get("http://26.134.156.44:8000/events", {
+      const response = await axios.get("http://localhost:8000/events", {
         headers: {
           Authorization: "Bearer " + this.$cookies.get("token"),
         },
@@ -72,7 +72,7 @@ export default {
       try {
         this.isCreateDisabled = true;
         const response = await axios.post(
-          "http://26.134.156.44:8000/events",
+          "http://localhost:8000/events",
           {},
           {
             headers: {
@@ -93,7 +93,7 @@ export default {
     async deleteContest(contest) {
       try {
         const response = await axios.delete(
-          `http://26.134.156.44:8000/events/${contest.id}`,
+          `http://localhost:8000/events/${contest.id}`,
           {
             headers: {
               Authorization: "Bearer " + this.$cookies.get("token"),
@@ -112,7 +112,7 @@ export default {
     async connectToContest(contestId, evaluationMethod) {
       try {
         const response = await axios.get(
-          `http://26.134.156.44:8000/check_status?eventId=${contestId}&id=${this.user.id}`,
+          `http://localhost:8000/check_status?eventId=${contestId}&id=${this.user.id}`,
           {
             headers: {
               Authorization: "Bearer " + this.$cookies.get("token"),

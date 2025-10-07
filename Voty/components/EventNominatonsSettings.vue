@@ -52,7 +52,7 @@ export default {
     try {
       const eventId = this.$route.query.id;
       const response = await axios.get(
-        `http://26.134.156.44:8000/events/${eventId}/nominations`,
+        `http://localhost:8000/events/${eventId}/nominations`,
         {
           headers: {
             Authorization: "Bearer " + this.$cookies.get("token"),
@@ -72,7 +72,7 @@ export default {
         const eventId = this.$route.query.id;
         this.isCreateDisabled = true;
         const response = await axios.post(
-          `http://26.134.156.44:8000/events/${eventId}/nominations`,
+          `http://localhost:8000/events/${eventId}/nominations`,
           {},
           {
             headers: {
@@ -100,7 +100,7 @@ export default {
           (nomination) => nomination.id === nominationId
         );
         const response = await axios.put(
-          `http://26.134.156.44:8000/events/${eventId}/nominations/${nomination.id}`,
+          `http://localhost:8000/events/${eventId}/nominations/${nomination.id}`,
           nomination,
           {
             headers: {
@@ -146,7 +146,7 @@ export default {
       try {
         // Send the delete request to the backend
         await axios.delete(
-          `http://26.134.156.44:8000/events/${eventId}/nominations/${nominationId}`,
+          `http://localhost:8000/events/${eventId}/nominations/${nominationId}`,
           {
             headers: {
               Authorization: "Bearer " + this.$cookies.get("token"),

@@ -47,7 +47,7 @@ export default {
   async fetch() {
     try {
       const response = await axios.get(
-        `http://26.134.156.44:8000/users/experts`,
+        `http://localhost:8000/users/experts`,
         {
           headers: {
             Authorization: "Bearer " + this.$cookies.get("token"),

@@ -85,7 +85,7 @@ export default {
       }
       axios
         .get(
-          `http://26.134.156.44:8000/events/${this.nominationData.event_id}`,
+          `http://localhost:8000/events/${this.nominationData.event_id}`,
           {
             headers: {
               Authorization: "Bearer " + this.$cookies.get("token"),

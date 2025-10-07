@@ -9,7 +9,7 @@ export default async function ({ app, redirect, store }) {
 
     try {
       const response = await axios.get(
-        "http://26.134.156.44:8000/check_token",
+        "http://localhost:8000/check_token",
         {
           headers: {
             Authorization: "Bearer " + token,

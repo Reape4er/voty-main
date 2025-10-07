@@ -75,7 +75,7 @@ export default {
     try {
       const nomination_id = this.$route.query.nomination_id;
       const response = await axios.get(
-        `http://26.134.156.44:8000/result?nomination_id=${nomination_id}`,
+        `http://localhost:8000/result?nomination_id=${nomination_id}`,
         {
           headers: {
             Authorization: "Bearer " + this.$cookies.get("token"),
@@ -103,7 +103,7 @@ export default {
     try {
       const nomination_id = this.$route.query.nomination_id;
       const response = await axios.get(
-        `http://26.134.156.44:8000/applications?nomination_id=${nomination_id}&accepted=${true}`,
+        `http://localhost:8000/applications?nomination_id=${nomination_id}&accepted=${true}`,
         {
           headers: {
             Authorization: "Bearer " + this.$cookies.get("token"),
@@ -134,7 +134,7 @@ export default {
       try {
         const nomination_id = this.$route.query.nomination_id;
         const response = await axios.put(
-          `http://26.134.156.44:8000/result?nomination_id=${nomination_id}`,
+          `http://localhost:8000/result?nomination_id=${nomination_id}`,
           this.eventScores,
           {
             headers: {
@@ -181,7 +181,7 @@ export default {
 
 
       this.$axios
-        .get(`http://26.134.156.44:8000/get_protocol?nomination_id=${nomination_id}`, {
+        .get(`http://localhost:8000/get_protocol?nomination_id=${nomination_id}`, {
           responseType: "arraybuffer",
         })
         .then((response) => {

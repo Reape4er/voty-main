@@ -52,7 +52,7 @@ export default {
     async submitForm() {
       console.log(this.User)
       try {
-        const response = await axios.post('http://26.134.156.44:8000/login', this.User);
+        const response = await axios.post('http://localhost:8000/login', this.User);
         console.log(response.data);
         this.$cookies.set('token', response.data.access_token);
         console.log(this.$cookies.get('token'))

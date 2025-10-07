@@ -123,7 +123,7 @@ export default {
       console.log(this.User);
       try {
         const response = await axios.post(
-          "http://26.134.156.44:8000/register",
+          "http://localhost:8000/register",
           this.User
         );
         console.log(response.data);

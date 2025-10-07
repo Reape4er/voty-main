@@ -64,7 +64,7 @@ export default {
       const event_id = this.$route.query.event_id;
       const nomination_id = this.$route.query.nomination_id;
       const responseC = await axios.get(
-        `http://26.134.156.44:8000/events/${event_id}/criteria?nomination_id=${nomination_id}&expert_id=${this.user.id}`,
+        `http://localhost:8000/events/${event_id}/criteria?nomination_id=${nomination_id}&expert_id=${this.user.id}`,
         {
           headers: {
             Authorization: "Bearer " + this.$cookies.get("token"),
@@ -81,7 +81,7 @@ export default {
     try {
       const nomination_id = this.$route.query.nomination_id;
       const response = await axios.get(
-        `http://26.134.156.44:8000/applications?nomination_id=${nomination_id}&accepted=${true}`,
+        `http://localhost:8000/applications?nomination_id=${nomination_id}&accepted=${true}`,
         {
           headers: {
             Authorization: "Bearer " + this.$cookies.get("token"),
@@ -258,7 +258,7 @@ export default {
           (item) => item.app_id !== null
         );
         const response = await axios.put(
-          `http://26.134.156.44:8000/update_scores`,
+          `http://localhost:8000/update_scores`,
           {
             expertId: expertId,
             eventId: eventId,

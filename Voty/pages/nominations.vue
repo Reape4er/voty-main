@@ -38,7 +38,7 @@ export default {
     try {
       const eventId = this.$route.query.eventid;
       const response = await axios.get(
-        `http://26.134.156.44:8000/events/${eventId}/nominations`,
+        `http://localhost:8000/events/${eventId}/nominations`,
         {
           headers: {
             Authorization: "Bearer " + this.$cookies.get("token"),
@@ -65,7 +65,7 @@ export default {
         !nominationCopy["nomination_status"];
       axios
         .put(
-          `http://26.134.156.44:8000/events/${eventId}/nominations/${nominationCopy.id}`,
+          `http://localhost:8000/events/${eventId}/nominations/${nominationCopy.id}`,
           nominationCopy,
           {
             headers: {
@@ -93,7 +93,7 @@ export default {
     async CalculateResult(nominationId) {
       try {
         const result = await axios.post(
-          `http://26.134.156.44:8000/result`,
+          `http://localhost:8000/result`,
           { nomination_id: nominationId },
           {
             headers: {
