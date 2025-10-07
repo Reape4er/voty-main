@@ -5,16 +5,10 @@
         <b-button size="sm" @click="row.toggleDetails" class="mr-2">
           {{ row.detailsShowing ? "Скрыть" : "Показать" }} детали
         </b-button>
-
-        <!-- As `row.showDetails` is one-way, we call the toggleDetails function on @change -->
-        <!-- <b-form-checkbox v-model="row.detailsShowing" @change="row.toggleDetails">
-            Details via check
-          </b-form-checkbox> -->
       </template>
 
       <template #row-details="row">
         <b-card>
-          <!-- Define the fields you want to exclude -->
           <b-row
             class="mb-2"
             v-for="(value, key) in row.item"
@@ -69,7 +63,6 @@ export default {
           },
         }
       );
-      // this.applications = response.data;
       this.applications = response.data.map((application) => {
         return {
           ...application,

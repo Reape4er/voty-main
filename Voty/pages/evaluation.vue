@@ -49,20 +49,6 @@
               </div>
             </b-form-group>
           </div>
-
-          <!-- <b-form-group
-            id="input-group-4"
-            label="Комментарии:"
-            label-for="textarea-4"
-          >
-            <b-form-textarea
-              id="textarea-4"
-              v-model="blank.comments"
-              placeholder="Введите комментарии"
-              rows="3"
-              max-rows="6"
-            ></b-form-textarea>
-          </b-form-group> -->
           <!-- Save button -->
           <b-button type="submit" class="mt-3" variant="success">Сохранить форму</b-button>
         </b-form>
@@ -90,8 +76,6 @@ export default {
         nominationId: null,
         expertId: null,
         selectedParticipantId: 1,
-        // criteria: null,
-        // comments: "",
       },
       options: [
         { text: "Выберите оценку", value: null, disabled: true },
@@ -117,7 +101,6 @@ export default {
         : [];
     } catch (error) {
       console.error(error);
-      // this.criterias = []; // Default to an empty array in case of an error
     }
 
     //получение участников
@@ -167,10 +150,6 @@ export default {
         });
       }
     },
-    /*selectedParticipantId(newId){
-    this.selectedParticipant = participants.find(item => item.id === newId);
-    console.log(this.selectedParticipant)
-  }*/
   },
 
   methods: {
@@ -204,7 +183,6 @@ export default {
           ...criteria,
           value: null,
         }));
-        // this.blank.comments = "";
         console.error(error);
       }
     },
@@ -215,13 +193,11 @@ export default {
         this.blank.eventId = this.$route.query.event_id;
         this.blank.nominationId = this.$route.query.nomination_id;
 
-        // console.log(eventId);
         const response = await axios.put(
           `http://26.134.156.44:8000/update_scores?eventId=${this.blank.eventId}`,
           {
             ...this.blank,
             criteria: this.criterias,
-            // ...this.criterias.reduce((acc, item) => ({ ...acc, [item.id]: item.value }), {})
           },
           {
             headers: {

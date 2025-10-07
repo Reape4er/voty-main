@@ -10,15 +10,6 @@ protocol_bp = Blueprint("protocol", __name__)
 
 @protocol_bp.route("/get_protocol", methods=["GET"])
 def get_protocol():
-    # Data = request.get_json()
-    # event_id = Data["eventId"]
-
-    # rating = Data["topThreeParticipants"]
-
-    # participant_cup_recommendation = Data["cupNominee"]
-    # journal_recomendation = Data["journalPublications"]
-    # conference_recomendation = Data["conferenceParticipations"]
-    
     now = datetime.now()
     date_str = now.strftime("%d.%m.%Y")  # формат: день.месяц.год
 
@@ -43,13 +34,6 @@ def get_protocol():
         rating_position = None
     nomination_result = [r.to_dict() for r in nomination.nomination_results]
     sorted_nomination_result = sorted(nomination_result, key=lambda x: x['rank'])
-    # comments = [item['comments'] for item in sorted_nomination_result]
-    # full_applications = []
-    # for result in sorted_nomination_result:  
-    #     application_id = result['application_id']
-    #     application = Applications.query.get(application_id)
-    #     full_application = application.full_application_dict()
-    #     full_applications.append(full_application)
     nomination_results = []
     for result in sorted_nomination_result:
         application_id = result['application_id']

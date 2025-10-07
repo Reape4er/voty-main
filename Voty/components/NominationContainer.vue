@@ -133,10 +133,8 @@ export default {
   color: #616161;
 }
 .contest-manage_edit_button {
-  /* color: #616161; */
   cursor: pointer;
   text-decoration: none;
-  /* margin-left: 10px; */
 }
 .contest-manage_delete_button {
   color: #be6363;

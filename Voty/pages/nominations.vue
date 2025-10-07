@@ -35,8 +35,6 @@ export default {
     };
   },
   async fetch() {
-    // Вызывайте функцию для получения мероприятий после создания компонента
-    // this.getContests();
     try {
       const eventId = this.$route.query.eventid;
       const response = await axios.get(
@@ -48,7 +46,6 @@ export default {
         }
       );
       this.nominations = response.data;
-      //console.log(response);
       console.log(this.nominations);
     } catch (error) {
       console.error("Error fetching contests:", error);

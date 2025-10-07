@@ -28,7 +28,7 @@ with app.app_context():
 
 # Регистрация Blueprint
 app.register_blueprint(auth_bp)
-app.register_blueprint(events_bp)  # url_prefix='/events' использвоать потом
+app.register_blueprint(events_bp)
 app.register_blueprint(nominations_bp) 
 app.register_blueprint(protocol_bp)
 app.register_blueprint(scores_bp)

@@ -1,16 +1,10 @@
 <template>
   <div>
-    <!-- <button @click="saveToCookies">Сохранить локально</button>
-    <button @click="loadFromCookies">Загрузить данные</button>
-    <button @click="createProtocol">Составить протокол</button> -->
     <div class="ml-1">
       <b-button @click="updateResult">Сохранить изменения</b-button>
       <b-button @click="createProtocol">Составить протокол</b-button>
     </div>
     <div class="row bg-light border-bottom font-weight-bold text-Medium">
-      <!-- <div class="col-1 d-flex align-items-center justify-content-right">
-        Переназначить
-      </div> -->
       <div class="col-1 d-flex align-items-center justify-content-center">
         Позиция рейтинга
       </div>
@@ -29,17 +23,10 @@
       <div class="col-3 d-flex align-items-center">
         Комментарии
       </div>
-      <!-- <div class="col-4 d-flex align-items-center">Наименование проекта</div> -->
 
-      <!-- <div class="col-1 d-flex align-items-center justify-content-center">Рекомендации на кубок ректора</div>
-      <div class="col-1 d-flex align-items-center justify-content-center">Рекомендация на публикацию в журнале</div>
-      <div class="col-1 d-flex align-items-center justify-content-center">Рекомендация на участие в конференции</div> -->
     </div>
     <draggable v-model="eventScores" @end="updateRanks" :options="{ handle: '.handle' }">
       <div class="row bg-light border-bottom text-large" v-for="(item, index) in eventScores" :key="item.id">
-        <!-- <div class="handle col-1 d-flex align-items-center justify-content-center">
-          ::
-        </div> -->
         <div class="col-1 d-flex align-items-center justify-content-center">
           {{ index + 1 }}
         </div>
@@ -53,9 +40,6 @@
           <b-form-spinbutton vertical size="sm" v-model="item.additional_score" min="0"
             @change="updateTable"></b-form-spinbutton>
         </div>
-        <!-- <div class="col-9 d-flex align-items-center">
-          {{ getParticipantInfo(item.application_id) }}
-        </div> -->
         <div class="col-5 d-flex flex-column align-items-left">
           <div v-for="(value, key) in getParticipantInfo(item.application_id)" :key="key">
             <strong>{{ key }}</strong>: {{ value }}
@@ -64,17 +48,6 @@
         <div class="col-3 d-flex flex-column align-items-left">
           <b-form-textarea v-model=item.comments />
         </div>
-        <!-- <div class="col-4 d-flex align-items-center">{{ item.report_title }}</div> -->
-
-        <!-- <div class="col-1 d-flex align-items-center justify-content-center">
-          <input type="radio" :value="item.id" v-model="cupNominee" />
-        </div>
-        <div class="col-1 d-flex align-items-center justify-content-center">
-          <input type="checkbox" :value="item.id" v-model="journalPublications" />
-        </div>
-        <div class="col-1 d-flex align-items-center justify-content-center">
-          <input type="checkbox" :value="item.id" v-model="conferenceParticipations" />
-        </div> -->
       </div>
     </draggable>
   </div>
@@ -138,7 +111,6 @@ export default {
         }
       );
       this.participants = response.data;
-      // this.searchedParticipants = response.data;
     } catch (error) {
       console.error(error);
     }
@@ -157,15 +129,7 @@ export default {
       this.eventScores.sort((a, b) => b.total_result - a.total_result);
       this.updateRanks();
     },
-    // getParticipantInfo(itemId) {
-    //   const participant = this.participants.find(
-    //     (participant) => participant.id === itemId
-    //   );
-    //   console.log(participant);
-    //   return participant
-    //     ? participant[participant["short_info_columns"]]
-    //     : "No info available";
-    // },
+
     async updateResult() {
       try {
         const nomination_id = this.$route.query.nomination_id;
@@ -178,7 +142,6 @@ export default {
             },
           }
         );
-        // this.searchedParticipants = response.data;
       } catch (error) {
         console.error(error);
       }
@@ -234,29 +197,6 @@ export default {
     },
   },
 
-  /*watch: {
-    eventScores: {
-      handler() {
-        this.saveToCookies();
-      },
-      deep: true,
-    },
-    cupNominee() {
-      this.saveToCookies();
-    },
-    journalPublications: {
-      handler() {
-        this.saveToCookies();
-      },
-      deep: true,
-    },
-    conferenceParticipations: {
-      handler() {
-        this.saveToCookies();
-      },
-      deep: true,
-    },
-  },*/
 };
 </script>
 

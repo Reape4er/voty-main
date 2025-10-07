@@ -20,9 +20,6 @@
         <b-form @submit.prevent="saveEvaluation">
           <!-- Отображение имени участника и его проекта-->
           <b-card class="mt-3">
-            <!-- <h4>
-              {{ currentParticipantData }}
-            </h4> -->
             <div v-if="currentParticipantData">
               <div v-for="(value, key) in currentParticipantData" :key="key">
                 <strong>{{ key }}:</strong> {{ value }}
@@ -97,7 +94,6 @@ export default {
     } catch (error) {
       console.error(error);
     }
-    // console.log('moun')
     //создаем рейтинговые места
 
     this.items = Array.from({ length: this.positionCount }, (_, index) => ({
@@ -106,12 +102,6 @@ export default {
     }));
 
     //настраиваем поля отображения
-    // this.fields.push({
-    //   key: "short_info_columns",
-    //   label: "Короткая информация заявки",
-    //   width: "95%",
-    //   class: "text-center",
-    // });
     this.fields = this.fields.concat(
       this.participants[0].short_info_columns.map(column => ({
         key: column,
@@ -140,10 +130,6 @@ export default {
             (p) => p.id == entry.application_id
           );
           if (participant) {
-            // console.log(participant)
-            // console.log(participant[participant.short_info_columns[0]])
-            // item["short_info_columns"] =
-            //   participant[participant.short_info_columns[0]];
             participant.short_info_columns.forEach(column => {
               item[column] = participant[column];
             });
@@ -176,8 +162,6 @@ export default {
         eventId: null,
         expertId: null,
         selectedParticipantId: 1,
-        //ratingTable: Array.from({ length: 5 }, () => ({ participantId: null })),
-        //comments: "",
       },
       rankOptions: [{ value: null, text: "Выберите место", disabled: true }],
     };
@@ -186,13 +170,6 @@ export default {
     ...mapGetters({
       user: "getUser",
     }),
-    // currentParticipantData() {
-    //   if (this.selectedParticipant != undefined) {
-    //     return this.selectedParticipant[
-    //       this.selectedParticipant["short_info_columns"]
-    //     ];
-    //   }
-    // },
     currentParticipantData() {
       try {
         if (this.selectedParticipant) {
@@ -234,12 +211,6 @@ export default {
       if (this.items[rank - 1]["app_id"] == id) {
         return;
       }
-      // this.items.forEach((item) => {
-      //   if (item.app_id === id) {
-      //     item.app_id = null;
-      //     item["short_info_columns"] = null;
-      //   }
-      // });
       // Обунляем прошлую позицию если участник уже был в таблице
       this.items.forEach((item) => {
         if (item.app_id === id) {
@@ -250,33 +221,20 @@ export default {
 
         }
       });
-      // let temp1 = {
-      //   app_id: this.items[rank - 1]["app_id"],
-      //   short_info_columns: this.items[rank - 1]["short_info_columns"],
-      // };
       let temp1 = { ...this.items[rank - 1] };
       delete temp1.position; // удаляем скоированную позицию чтобы не сломать порядок
 
       const participant = this.participants.find((p) => p.id === id);
       this.$set(this.items[rank - 1], 'app_id', participant.id);
-      // this.items[rank - 1]["short_info_columns"] =
-      //   participant[participant["short_info_columns"]];
+
       participant.short_info_columns.forEach(column => {
         this.$set(this.items[rank - 1], column, participant[column]);
       });
       if (temp1.app_id !== null) {
         for (let i = rank; i < this.items.length; i++) {
-          // let temp2 = {
-          //   app_id: this.items[i]["app_id"],
-          //   short_info_columns: this.items[i]["short_info_columns"],
-          // };
           let temp2 = { ...this.items[i] };
           delete temp2.position; //также удаляем позицию
           console.log(temp1);
-          // this.items[i]["app_id"] = temp1["app_id"];
-          // this.items[i]["short_info_columns"] = temp1["short_info_columns"];
-          // не работает
-          // this.$set(this.items, i, { ...temp1 });
           for (let key in temp1) {
             if (temp1.hasOwnProperty(key)) {
               this.$set(this.items[i], key, temp1[key]);

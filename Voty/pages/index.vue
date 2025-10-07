@@ -62,8 +62,6 @@ export default {
         },
       });
       this.contests = response.data;
-      //console.log(response);
-      //console.log(this.contests);
     } catch (error) {
       console.error("Error fetching contests:", error);
     }
@@ -104,7 +102,6 @@ export default {
         );
 
         if (response.status === 200) {
-          // await this.getContests();
           this.contests = this.contests.filter((c) => c.id !== contest.id);
         }
       } catch (error) {

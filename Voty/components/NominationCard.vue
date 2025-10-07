@@ -79,9 +79,6 @@ export default {
     toggleList() {
       this.isListVisible = !this.isListVisible;
     }
-    // updateNomination(){
-    //   console.log(0)
-    // },
   },
   watch: {
   localNominationName(newVal) {

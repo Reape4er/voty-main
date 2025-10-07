@@ -16,12 +16,8 @@
 </template>
 
 <script>
-//   import ExpertRow from './ExpertRow.vue';
 import axios from "axios";
 export default {
-  // components: {
-  //   ExpertRow
-  // },
   props: {
     selectedExperts: {
       type: Array,
@@ -39,10 +35,6 @@ export default {
       newSelectedExperts: [],
     };
   },
-  // beforeUpdate() {
-  //   this.newSelectedExperts = [...this.selectedExperts];
-  //   console.log("абоба",this.newSelectedExperts)
-  // },
   watch: {
     selectedExperts: {
       deep: true,
